@@ -1,4 +1,5 @@
 ## Informações
+
 * **Disciplina:** Desenvolvimento de Aplicativos Móveis Híbridos (Flutter)
 * **Dia:** SEXTA-FEIRA
 * **Período:** NOITE
@@ -24,3 +25,4 @@ Este material é uma iniciativa independente para auxiliar os alunos, visando fa
 ## Links de apoio da disciplina
 + [FlutLab](https://flutlab.io/editor) - Plataforma colaborativa de programação (online)
 + [Instalação do Java EE](https://www.oracle.com/java/technologies/javaee-8-sdk-downloads.html) - Pacote necessário para desenvolvimento de aplicações para web com Java - Java Enterprise Edition.
+
