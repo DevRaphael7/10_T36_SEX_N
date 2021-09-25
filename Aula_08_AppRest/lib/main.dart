@@ -17,7 +17,8 @@ class Pessoa {
   final String message;
   final String nome;
   final String email;
-  Pessoa({this.id, this.message, this.nome, this.email});
+  final String token;
+  Pessoa({this.id, this.message, this.nome, this.email, this.token});
 
   // converte o formato JSON para um objeto "Pessoa"
   factory Pessoa.fromJson(Map<String, dynamic> json) {
@@ -26,6 +27,7 @@ class Pessoa {
       message: json['message'] as String,
       nome: json['name'] as String,
       email: json['email'] as String,
+      token: json['token'] as String,
     );
   }
 }
@@ -45,9 +47,10 @@ class _HomeState extends State<Home> {
   String _nome = '';
   String _email = '';
   String _mensagem = '';
+  String _token = '';
 
   // Documentação da API
-  // https://github.com/EdsonMSouza/simple-php-api
+  // https://github.com/EdsonMSouza/php-api-to-do-list
 
   // Endereço da API
   Uri url = Uri.parse('http://emsapi.esy.es/todolist/api/user/login/');
@@ -58,8 +61,7 @@ class _HomeState extends State<Home> {
     http.Response response = await http.post(
       this.url,
       headers: <String, String>{
-        "Content-Type": "Application/json; charset=UTF-8",
-        "Authorization": "123",
+        "Content-Type": "Application/json; charset=UTF-8"
       },
       body: jsonEncode(<String, String>{
         "username": usuarioController.text,
@@ -81,6 +83,7 @@ class _HomeState extends State<Home> {
           _id = pessoa.id;
           _nome = pessoa.nome;
           _email = pessoa.email;
+          _token = pessoa.token;
           _mensagem = '';
 
           // envia os dados após recuperar da API (se deu certo)
@@ -95,6 +98,7 @@ class _HomeState extends State<Home> {
         _id = 0;
         _nome = '';
         _email = '';
+        _token = '';
         _mensagem = pessoa.message;
         // if (_mensagem == 'Incorrect username and/or password') {
         //   _mensagem = 'Usuário e/ou senha incorretos';
@@ -107,7 +111,7 @@ class _HomeState extends State<Home> {
   // método para enviar dados para outra tela (view)
   void _enviarDadosOutraTela(BuildContext context) {
     // variável para armazenar os dados que queremos passar à outra tela
-    List conteudo = <String>[_nome, _email];
+    List conteudo = <String>[_id.toString(), _nome, _email, _token];
 
     // enviar os dados efetivamente, ou seja, abrir a outra tela
     Navigator.push(

@@ -13,8 +13,11 @@ class Dados extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Text(conteudo[0]),
-            Text(conteudo[1]),
+            Text('Id: ' + conteudo[0]),
+            Text('Nome: ' + conteudo[1]),
+            Text('Email: ' + conteudo[2]),
+            Text('Token: ' + conteudo[3]),
+            Text('\n'),
             MaterialButton(
               onPressed: () {
                 Navigator.pop(context);
